@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MVCPeople.Data;
 
 namespace MVCPeople.Migrations
-{
+{ 
     [DbContext(typeof(PeopleDbContext))]
     [Migration("20220118084306_Identity")]
     partial class Identity
