@@ -41,7 +41,7 @@ namespace MVCPeople.Models.Services
         public List<Person> Search(string search)
         {
             List<Person> searchPerson = _peopleRepo.GetAll();
-            //
+            
             foreach (Person item in _peopleRepo.GetAll())
             {
                 if (item.Name.Contains(search, StringComparison.OrdinalIgnoreCase))
@@ -49,7 +49,6 @@ namespace MVCPeople.Models.Services
                     searchPerson.Add(item);
                 }
             }
-            //searchPerson = searchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper()) || p.City.Contains(search.ToUpper())).ToList();
             if (searchPerson.Count == 0)
             {
                 throw new ArgumentException("Could not find what you where looking for");
@@ -58,7 +57,6 @@ namespace MVCPeople.Models.Services
         }
         public Person FindById(int id)
         {
-            //return _peopleRepo.Read(id);
             Person foundPerson = _peopleRepo.GetById(id);
 
             return foundPerson;
@@ -94,7 +92,6 @@ namespace MVCPeople.Models.Services
                 foreach (PersonLanguage pLanguage in person.PersonLanguages)
                 {
                     Language language = allLanguages.Single(l => l.Id == pLanguage.LanguageId);
-                // l= is a short version for "language"
                     personLanguage.SpeakesLanguage.Add(language);
                     allLanguages.Remove(language);
                 }
@@ -107,7 +104,6 @@ namespace MVCPeople.Models.Services
         public void RemoveLanguage(Person person, int languageId)
         {
             PersonLanguage language = person.PersonLanguages.SingleOrDefault(pL => pL.LanguageId == languageId);
-            // pL= is short version for peoleLanguage
             person.PersonLanguages.Remove(language);
             _peopleRepo.Update(person);
         }

@@ -33,7 +33,6 @@ namespace MVCPeople.Models.Services
         public List<Language> FindBy(string search)
         {
             List<Language> searchLanguage = _languageRepo.GetAll();
-            //
             foreach (Language item in _languageRepo.GetAll())
             {
                 if (item.LanguageName.Contains(search, StringComparison.OrdinalIgnoreCase))
@@ -41,7 +40,6 @@ namespace MVCPeople.Models.Services
                     searchLanguage.Add(item);
                 }
             }
-            //searchPerson = searchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper()) || p.City.Contains(search.ToUpper())).ToList();
             if (searchLanguage.Count == 0)
             {
                 throw new ArgumentException("Could not find what you where looking for");

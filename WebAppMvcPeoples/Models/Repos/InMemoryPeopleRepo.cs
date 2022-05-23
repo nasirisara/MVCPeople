@@ -60,5 +60,5 @@ namespace MVCPeople.Models.Repos
         }
 
 
-    }//End of Class name
-}//End of namespace
+    }
+}

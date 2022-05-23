@@ -20,7 +20,7 @@ namespace MVCPeople.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.City", b =>
+            modelBuilder.Entity("MVCPeople.Models.City", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace MVCPeople.Migrations
                     b.ToTable("Cities");
                 });
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.Country", b =>
+            modelBuilder.Entity("MVCPeople.Models.Country", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace MVCPeople.Migrations
                     b.ToTable("Countries");
                 });
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.Language", b =>
+            modelBuilder.Entity("MVCPeople.Models.Language", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,7 +72,7 @@ namespace MVCPeople.Migrations
                     b.ToTable("Languages");
                 });
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.Person", b =>
+            modelBuilder.Entity("MVCPeople.Models.Person", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,7 +95,7 @@ namespace MVCPeople.Migrations
                     b.ToTable("People");
                 });
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.PersonLanguage", b =>
+            modelBuilder.Entity("MVCPeople.Models.PersonLanguage", b =>
                 {
                     b.Property<int>("PersonId")
                         .HasColumnType("int");
@@ -110,33 +110,33 @@ namespace MVCPeople.Migrations
                     b.ToTable("PersonLanguages");
                 });
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.City", b =>
+            modelBuilder.Entity("MVCPeople.Models.City", b =>
                 {
-                    b.HasOne("WebAppMvcPeoples.Models.Country", "Country")
+                    b.HasOne("MVCPeople.Models.Country", "Country")
                         .WithMany("Cities")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.Person", b =>
+            modelBuilder.Entity("MVCPeople.Models.Person", b =>
                 {
-                    b.HasOne("WebAppMvcPeoples.Models.City", "City")
+                    b.HasOne("MVCPeople.Models.City", "City")
                         .WithMany("People")
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.PersonLanguage", b =>
+            modelBuilder.Entity("MVCPeople.Models.PersonLanguage", b =>
                 {
-                    b.HasOne("WebAppMvcPeoples.Models.Language", "Language")
+                    b.HasOne("MVCPeople.Models.Language", "Language")
                         .WithMany("PersonLanguages")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebAppMvcPeoples.Models.Person", "Person")
+                    b.HasOne("MVCPeople.Models.Person", "Person")
                         .WithMany("PersonLanguages")
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)

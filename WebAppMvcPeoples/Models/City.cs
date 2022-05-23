@@ -10,20 +10,20 @@ namespace MVCPeople.Models
     public class City
     {
         [Key]
-        public int Id { get; set; }// Key
+        public int Id { get; set; }
 
-        public City()//Empty constructor
+        public City()
         { }
 
         public City(string cityName) { CityName = cityName; }
         [Required]
         [MaxLength(80)]
         public string CityName { get; set; }
-        public List<Person> People { get; set; }//Navigation Property
+        public List<Person> People { get; set; }
 
         [ForeignKey("Country")]
-        public int CountryId { get; set; }// PeopleDbContext ForeignKey
-        public Country Country { get; set; }//Navigation Property
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
 
 
     }

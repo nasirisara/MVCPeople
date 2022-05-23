@@ -13,7 +13,7 @@ namespace MVCPeople.Controllers
     {
         IPeopleService _peopleService;
      
-        //private readonly ICountryService _countryService;
+        
         public AjaxPeopleController(IPeopleService peopleService)
         {
             _peopleService = peopleService;

@@ -7,8 +7,6 @@ using MVCPeople.Models;
 using MVCPeople.Models.Services;
 using MVCPeople.Models.ViewModels;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace MVCPeople.Controllers
 {
     [Route("api/people")]
@@ -21,7 +19,7 @@ namespace MVCPeople.Controllers
         {
             _peopleService = peopleService;
         }
-        // GET: api/<PeopleAPIController>
+        
         [HttpGet]
         public IEnumerable<Person> Get()
         {
@@ -37,7 +35,7 @@ namespace MVCPeople.Controllers
             return list;
         }
 
-        // GET api/<PeopleAPIController>/5
+        
         [HttpGet("{id}")]
         public Person Get(int id)
         {
@@ -57,7 +55,7 @@ namespace MVCPeople.Controllers
 
         }
 
-        // POST api/<PeopleAPIController>
+        
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -66,22 +64,21 @@ namespace MVCPeople.Controllers
             Person person =_peopleService.Create(createPerson);
             if (person != null)
             {
-                Response.StatusCode = 201;//Created
+                Response.StatusCode = 201;
             }
             else
             {
-                Response.StatusCode = 400;//Bad request
+                Response.StatusCode = 400;
             }
         }
 
-        // PUT api/<PeopleAPIController>/5
+        
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CreatePersonViewModel editPerson)
         {
             _peopleService.Edit(id, editPerson);
         }
 
-        // DELETE api/<PeopleAPIController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

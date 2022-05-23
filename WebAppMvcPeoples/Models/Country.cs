@@ -10,11 +10,11 @@ namespace MVCPeople.Models
     { 
 
         [Key]
-        public int Id { get; set; }// Needs to be set in Cityclass 
-        public List<City> Cities { get; set; }//Navigation Property
+        public int Id { get; set; } 
+        public List<City> Cities { get; set; }
         public string CountryName { get; set; }
         public Country(string countryName) { CountryName = countryName; }
-        public Country()// Empty constructor
+        public Country()
         { }
 
     }

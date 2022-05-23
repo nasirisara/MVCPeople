@@ -22,15 +22,14 @@ namespace MVCPeople.Data
                 dtk.LanguageId
             });
 
-            // Join-table many-to-manyrelationship
 
 
-            modelBuilder.Entity<PersonLanguage>() // One Person to Many Languages
+            modelBuilder.Entity<PersonLanguage>() 
                 .HasOne(dtk => dtk.Person)
                 .WithMany(dt => dt.PersonLanguages)
                 .HasForeignKey(dtk => dtk.PersonId);
 
-            modelBuilder.Entity<PersonLanguage>()  // One Language to Many People
+            modelBuilder.Entity<PersonLanguage>() 
                 .HasOne(dtk => dtk.Language)
                 .WithMany(dt => dt.PersonLanguages)
                 .HasForeignKey(dtk => dtk.LanguageId);

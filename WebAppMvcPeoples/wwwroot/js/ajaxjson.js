@@ -1,6 +1,4 @@
-﻿/*
- * 
-}*/
+﻿
 
 
 function getSpaWithAjax(actionUrl, targetElementId) {
@@ -47,4 +45,3 @@ function ajaxPost(actionUrl, inputId) {
     })
 }
 
-//getSpaWithAjax('AjaxPeople/SpaPeopleList', 'spaPeopleList');

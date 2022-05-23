@@ -14,6 +14,6 @@ namespace MVCPeople.Models
         [Key]
         public int Id { get; set;}
         public string LanguageName { get; set; }
-        public List<PersonLanguage> PersonLanguages { get; set; } //Navigation Property
+        public List<PersonLanguage> PersonLanguages { get; set; } 
     }
 }

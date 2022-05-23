@@ -39,7 +39,7 @@ namespace MVCPeople.Models.Services
         public List<City> FindBy(string search)
         {
             List<City> searchCity = _cityRepo.GetAll();
-            //
+            
             foreach (City item in _cityRepo.GetAll())
             {
                 if (item.CityName.Contains(search, StringComparison.OrdinalIgnoreCase))
@@ -47,7 +47,6 @@ namespace MVCPeople.Models.Services
                     searchCity.Add(item);
                 }
             }
-            //searchPerson = searchPerson.Where(p => p.Name.ToUpper().Contains(search.ToUpper()) || p.City.Contains(search.ToUpper())).ToList();
             if (searchCity.Count == 0)
             {
                 throw new ArgumentException("Could not find what you where looking for");

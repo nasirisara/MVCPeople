@@ -10,7 +10,7 @@ using MVCPeople.Models;
 namespace MVCPeople.Controllers
 {
     public class HomeController : Controller
-    {// removed Ilogger
+    {
 
         public IActionResult Index()
         {

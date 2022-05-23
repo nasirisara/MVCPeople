@@ -19,10 +19,7 @@ namespace MVCPeople.Controllers
             _peopleService = peopleService;
             _cityService = cityService;
         }
-        //public PeopleController()
-        //{
-        //    _peopleService = new PeopleService(new InMemoryPeopleRepo());
-        //}
+        
 
         public IActionResult People()
         {
@@ -112,11 +109,9 @@ namespace MVCPeople.Controllers
         public IActionResult Delete(int id)
         {
             Person person = _peopleService.FindById(id);
-            //_peopleService.Remove(id);
             if (person == null)
             {
                 return RedirectToAction(nameof(People));
-                //return NotFound();//404
             }
             else
             {
@@ -167,7 +162,6 @@ namespace MVCPeople.Controllers
             return RedirectToAction(nameof(PersonLanguage), new { id = person.Id });
         }
 
-        //**********************************// AJAX //*******************************************//
         public IActionResult PartialViewPeople()
         {
             return PartialView("_PeopleList", _peopleService.GetAll());
@@ -193,5 +187,5 @@ namespace MVCPeople.Controllers
             return NotFound();
         }
 
-    }//End of Class name
-}//End of namespace
+    }
+}

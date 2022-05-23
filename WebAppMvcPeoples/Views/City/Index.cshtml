@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<City>
-@*@model List<City>*@
 @{
     ViewData["Title"] = "City Index";
 }
@@ -11,9 +10,7 @@
     <thead>
         <tr>
             <th></th>
-            @*<th>City</th>*@
             <th>@Html.DisplayNameFor(model => model.Id)</th>
-            @*<th>Country</th>*@
             <th>@Html.DisplayNameFor(model => model.CityName)</th>
             <th></th>
         </tr>
@@ -23,16 +20,12 @@
         @foreach (var item in Model)
         {
         <tr>
-            @*<td>@item.CityId</td>
-        <td>@item.CityName</td>
-        <td>@item.Country.CountryName</td>*@
+      
             <td>@Html.DisplayFor(modelItem=> item.Id)</td>
             <td>@Html.DisplayFor(modelItem => item.CityName)</td>
             <td>@Html.DisplayFor(modelItem => item.Country.CountryName)</td>
             <td>
-                @*<a asp-action="Edit" asp-controller="City" asp-route-id="@modelTtem.CityId" class="mr-4 text-warning">Edit</a>
-
-        <a asp-action="Delete" asp-controller="City" asp-route-id="@city.CityId" class="mr-4 text-danger">Delete </a>*@
+               
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id })|
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })|
             </td>

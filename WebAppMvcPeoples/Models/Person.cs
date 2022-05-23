@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MVCPeople.Models
-{// the blueprint of a Person or my person dataModel
+{
 
     public class Person
     {
@@ -23,7 +23,7 @@ namespace MVCPeople.Models
         [ForeignKey(nameof(City))]
         public int CityId { get; set; }
         public City City { get; set; }
-        public List<PersonLanguage> PersonLanguages { get; set; }//Navigation Property
+        public List<PersonLanguage> PersonLanguages { get; set; }
 
-    }//End of Person Class
-}//End of namespace
+    }
+}

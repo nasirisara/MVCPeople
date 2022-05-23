@@ -20,7 +20,7 @@ namespace MVCPeople.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebAppMvcPeoples.Models.Person", b =>
+            modelBuilder.Entity("MVCPeople.Models.Person", b =>
                 {
                     b.Property<int>("PersonId")
                         .ValueGeneratedOnAdd()

@@ -22,5 +22,5 @@ namespace MVCPeople.Models.ViewModels
         public int CityId{ get; set; }
 
         public List<City> Cities { get; set; }
-    }// End of class name
-}// End of namespace
+    }
+}
