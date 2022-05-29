@@ -19,47 +19,46 @@ using Microsoft.OpenApi.Models;
 namespace MVCPeople
 {
     public class Startup
-    {// Step 4
+    {
         public Startup(IConfiguration configuration)
-        {// jason appsetting
+        {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+      
         public void ConfigureServices(IServiceCollection services)
-        {// Step 5
+        {
             services.AddDbContext<PeopleDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<PeopleDbContext>().AddDefaultTokenProviders();
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    options.Password.RequireDigit = true;
-            //    options.Password.RequireLowercase = true;
-            //    options.Password.RequireNonAlphanumeric = true;
-            //    options.Password.RequireUppercase = true;
-            //    options.Password.RequiredLength = 6;
-            //    options.Password.RequiredUniqueChars = 2;
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<PeopleDbContext>().AddDefaultTokenProviders();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 2;
 
-            //});
+            });
 
-            // Step 6
-            //services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>();
-            services.AddScoped<IPeopleRepo, DatabasPeopleRepo>();// IoC & DI
-            services.AddScoped<IPeopleService, PeopleService>();// IoC & DI
+            
+            services.AddScoped<IPeopleRepo, DatabasPeopleRepo>();
+            services.AddScoped<IPeopleService, PeopleService>();
 
-            services.AddScoped<ICityRepo, DatabaseCityRepo>();// IoC & DI
-            services.AddScoped<ICityService, CityService>();// IoC & DI
+            services.AddScoped<ICityRepo, DatabaseCityRepo>();
+            services.AddScoped<ICityService, CityService>();
 
-            services.AddScoped<ICountryRepo, DatabaseCountryRepo>();// IoC & DI
-            services.AddScoped<ICountryService, CountryService>();// IoC & DI
+            services.AddScoped<ICountryRepo, DatabaseCountryRepo>();
+            services.AddScoped<ICountryService, CountryService>();
 
-            services.AddScoped<ILanguageRepo, DatabaseLanguageRepo>();// IoC & DI
-            services.AddScoped<ILanguageService, LanguageService>();// IoC & DI
+            services.AddScoped<ILanguageRepo, DatabaseLanguageRepo>();
+            services.AddScoped<ILanguageService, LanguageService>();
 
-            //services.AddControllersWithViews(); //Will be used later maybe
+           
 
             services.AddSwaggerGen(options =>
             {
@@ -76,7 +75,7 @@ namespace MVCPeople
                                   builder =>
                                   {
                                       builder.WithOrigins("*");// replace "*" with the domain or adress from were you will make request from "http://www.my-domain.com"
-                                   });
+                                  });
             });
 
             services.AddMvc().AddRazorRuntimeCompilation();
@@ -92,11 +91,11 @@ namespace MVCPeople
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+               
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles(); // for the static files like jsvascript css and more
+            app.UseStaticFiles(); 
 
             app.UseRouting();
 

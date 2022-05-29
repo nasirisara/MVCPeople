@@ -40,7 +40,10 @@ namespace MVCPeople
                 try
                 {
                     PeopleDbContext context = services.GetRequiredService<PeopleDbContext>();
-          
+                    RoleManager<IdentityRole> roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
+
+                    DbInitializer.InitializeAsync(context, roleManager, userManager).Wait();
                 }
                 catch (Exception ex)
                 {

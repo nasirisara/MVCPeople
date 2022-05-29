@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MVCPeople.Data
 {
-    public class PeopleDbContext:IdentityDbContext
+    public class PeopleDbContext : IdentityDbContext<AppUser>
     {
         public PeopleDbContext(DbContextOptions<PeopleDbContext> options) : base(options)
         { }
@@ -22,6 +22,7 @@ namespace MVCPeople.Data
                 dtk.LanguageId
             });
 
+      
 
 
             modelBuilder.Entity<PersonLanguage>() 
@@ -29,7 +30,7 @@ namespace MVCPeople.Data
                 .WithMany(dt => dt.PersonLanguages)
                 .HasForeignKey(dtk => dtk.PersonId);
 
-            modelBuilder.Entity<PersonLanguage>() 
+            modelBuilder.Entity<PersonLanguage>()  
                 .HasOne(dtk => dtk.Language)
                 .WithMany(dt => dt.PersonLanguages)
                 .HasForeignKey(dtk => dtk.LanguageId);

@@ -13,17 +13,17 @@ namespace MVCPeople.Controllers
     [ApiController]
     public class PeopleAPIController : ControllerBase
     {
-        
+
         private readonly IPeopleService _peopleService;
         public PeopleAPIController(IPeopleService peopleService)
         {
             _peopleService = peopleService;
         }
-        
+       
         [HttpGet]
         public IEnumerable<Person> Get()
         {
-            
+
             IEnumerable<Person> list = _peopleService.GetAll();
 
             foreach (var item in list)
@@ -51,7 +51,7 @@ namespace MVCPeople.Controllers
                 }
             }
             return person;
-            //return _peopleService.FindById(id);
+            
 
         }
 
@@ -61,7 +61,7 @@ namespace MVCPeople.Controllers
         [ProducesResponseType(400)]
         public void Post([FromBody] CreatePersonViewModel createPerson)
         {
-            Person person =_peopleService.Create(createPerson);
+            Person person = _peopleService.Create(createPerson);
             if (person != null)
             {
                 Response.StatusCode = 201;
@@ -72,13 +72,14 @@ namespace MVCPeople.Controllers
             }
         }
 
-        
+  
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] CreatePersonViewModel editPerson)
         {
             _peopleService.Edit(id, editPerson);
         }
 
+        
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
